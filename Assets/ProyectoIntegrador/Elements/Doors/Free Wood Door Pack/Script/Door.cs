@@ -7,6 +7,8 @@ namespace DoorScript
 
 
 public class Door : MonoBehaviour {
+
+	public List<GameObject> vfxs;
 	public bool open;
 	public float smooth = 1.0f;
 	float DoorOpenAngle = -90.0f;
@@ -20,18 +22,27 @@ public class Door : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
 		if (open)
 		{
+			Debug.Log("opnme");
             var target = Quaternion.Euler (0, DoorOpenAngle, 0);
             transform.localRotation = Quaternion.Slerp(transform.localRotation, target, Time.deltaTime * 5 * smooth);
+			foreach(GameObject vfx in vfxs)
+			{
+				vfx.SetActive (true);
+			}
 	
 		}
 		else
 		{
             var target1= Quaternion.Euler (0, DoorCloseAngle, 0);
             transform.localRotation = Quaternion.Slerp(transform.localRotation, target1, Time.deltaTime * 5 * smooth);
-	
-		}  
+            foreach (GameObject vfx in vfxs)
+            {
+                vfx.SetActive(false);
+            }
+        }  
 	}
 
 	public void OpenDoor(){
