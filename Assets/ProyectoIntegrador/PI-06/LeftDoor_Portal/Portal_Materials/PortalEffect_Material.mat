@@ -24,7 +24,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Albedo:
-        m_Texture: {fileID: 2800000, guid: 9851dfcdef4fcd4458527a6f4e45b375, type: 3}
+        m_Texture: {fileID: 2800000, guid: a2986a87276e6ea44a553f2159fb9714, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BGTexture1:
+        m_Texture: {fileID: 2800000, guid: 0262722e373030545b7df0e094b697c6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -75,11 +79,19 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _toMoveTexture:
+        m_Texture: {fileID: 2800000, guid: 321d5fa42d24b5e4ba17d9494e4a279e, type: 3}
+        m_Scale: {x: 0.95, y: 1}
+        m_Offset: {x: 0.09, y: -0.12}
+    - _toMoveTexture1:
+        m_Texture: {fileID: 2800000, guid: 0262722e373030545b7df0e094b697c6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
     - _Background_Opacity: 1
     - _Bias: 0
-    - _Bias_Fresnel: 0.01
+    - _Bias_Fresnel: 0
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
@@ -91,25 +103,34 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _Invert: 1
+    - _Invert: 0
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _Opacity: 0.96
+    - _Opacity: 0.9
     - _Parallax: 0.02
     - _Power: 2.4
-    - _Power_Fresnel: 2.4
-    - _Scale_Fresnel: 3.52
+    - _Power_Fresnel: 1.1404599
+    - _Scale_Fresnel: 2.1294117
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _Speed: 1
+    - _Speed: 2
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
     - __dirty: 0
+    - _distortionProportion: 1
+    - _distortionProportion1: 0
     m_Colors:
-    - _Color: {r: 0.5379596, g: 0, b: 1, a: 1}
+    - _BGColor: {r: 1, g: 0, b: 0, a: 1}
+    - _BackgroundColor: {r: 0.53795934, g: 0, b: 1, a: 1}
+    - _Color: {r: 0.53795934, g: 0, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Scale: {r: 40, g: 40, b: 40, a: 40}
+    - _FresnelColor: {r: 1, g: 0, b: 0, a: 1}
+    - _Scale: {r: 40, g: 40, b: 0, a: 0}
     - _Tilling: {r: 10, g: 10, b: 10, a: 10}
+    - _ToMoveTilling: {r: 1.36, g: 2, b: 0, a: 0}
+    - _ToMoveTilling1: {r: 0, g: 0, b: 0, a: 0}
+    - _distortionSpeed: {r: 1, g: 0, b: 0, a: 0}
+    - _distortionSpeed1: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
