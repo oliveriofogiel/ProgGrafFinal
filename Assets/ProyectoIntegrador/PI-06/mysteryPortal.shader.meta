@@ -5,7 +5,7 @@ ShaderImporter:
   defaultTextures:
   - _OffsetVFXTexture: {fileID: 2800000, guid: ed149bcd490b31d4c88cb74d9b2000e5, type: 3}
   - _BGTexture: {fileID: 2800000, guid: 0262722e373030545b7df0e094b697c6, type: 3}
-  - _toMoveTexture: {fileID: 2800000, guid: 0262722e373030545b7df0e094b697c6, type: 3}
+  - _DistortionTexture: {fileID: 2800000, guid: 0262722e373030545b7df0e094b697c6, type: 3}
   nonModifiableTextures: []
   userData: 
   assetBundleName: 
