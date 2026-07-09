@@ -7,13 +7,13 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: rtDoorAura
-  m_Shader: {fileID: 4800000, guid: 084f836a646a31e4ca72a0b310506891, type: 3}
+  m_Name: stencilDoorAura
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
-  m_LightmapFlags: 0
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -23,10 +23,6 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _AuraTexture:
-        m_Texture: {fileID: 2800000, guid: bf74fb9c03ee4934389f2e0d8231f3bc, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -63,26 +59,12 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _Texture0:
-        m_Texture: {fileID: 2800000, guid: 655c2528318d9a041bb8ed950c7246fc, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _TextureSample0:
-        m_Texture: {fileID: 2800000, guid: bf74fb9c03ee4934389f2e0d8231f3bc, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _texcoord:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _Frequency: 5
-    - _Frequency2: 1
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -94,19 +76,8 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
-    - _WaveAmplitude: -40.2
-    - _WaveFrequency: 3.54
-    - _WaveSpeed: 3
     - _ZWrite: 1
-    - __dirty: 0
-    - _amplitude: -0.74
-    - _linearSpeed: 3
-    - _linearSpeed2: 1
     m_Colors:
-    - _AuraColor: {r: 1, g: 0.2509804, b: 0.14509805, a: 1}
-    - _Color: {r: 1, g: 0, b: 0, a: 1}
-    - _Color0: {r: 1, g: 0.2500185, b: 0.1462264, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Vector0: {r: 0, g: 0, b: -4.71, a: 0}
-    - _WaveAxis: {r: 0, g: 0, b: -4.71, a: 0}
   m_BuildTextureStacks: []
