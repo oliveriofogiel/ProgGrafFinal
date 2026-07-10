@@ -256,9 +256,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 100000, guid: ae6041c0c33285c43b4f806225c736b0, type: 3}
+      propertyPath: m_TagString
+      value: Shield
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: ae6041c0c33285c43b4f806225c736b0, type: 3}
+      propertyPath: m_TagString
+      value: Shield
+      objectReference: {fileID: 0}
     - target: {fileID: 100004, guid: ae6041c0c33285c43b4f806225c736b0, type: 3}
       propertyPath: m_Name
       value: TestRoom
+      objectReference: {fileID: 0}
+    - target: {fileID: 125776, guid: ae6041c0c33285c43b4f806225c736b0, type: 3}
+      propertyPath: m_TagString
+      value: Shield
+      objectReference: {fileID: 0}
+    - target: {fileID: 182018, guid: ae6041c0c33285c43b4f806225c736b0, type: 3}
+      propertyPath: m_TagString
+      value: Shield
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: ae6041c0c33285c43b4f806225c736b0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -448,7 +464,7 @@ Transform:
   m_GameObject: {fileID: 468882260}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.13499999, y: 0.918, z: 1.64}
+  m_LocalPosition: {x: 0.135, y: 0.918, z: 0.687}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -468,7 +484,7 @@ GameObject:
   - component: {fileID: 639594552}
   - component: {fileID: 639594556}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: BuildUpSphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -603,7 +619,7 @@ MonoBehaviour:
   cycleDuration: 2.1
   bulletPrefab: {fileID: 5440098754909015280, guid: e77690bc768d66544a9a2b8ef697084f, type: 3}
   firePoint: {fileID: 468882262}
-  bulletSpeed: 8
+  bulletSpeed: 15
   spawnOffset: 0
   onShoot:
     m_PersistentCalls:
@@ -1350,7 +1366,7 @@ GameObject:
   - component: {fileID: 1806084907}
   m_Layer: 0
   m_Name: Shield
-  m_TagString: Shield
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1454,7 +1470,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44aaaf47de483b244b3ce034656405c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
   droidekaShieldMat: {fileID: 2100000, guid: 102245f82e309f74482ba3c562ab09f9, type: 2}
+=======
+  droidekaShieldMat: {fileID: 0}
+>>>>>>> Stashed changes
   impactDuration: 0.4
   projectileMask:
     serializedVersion: 2

@@ -9,7 +9,6 @@ public class EnergyBullet : MonoBehaviour
     [Header("Visual Scale")]
     [SerializeField] private Transform visualTransform;
     [SerializeField] private Vector3 targetScale = new Vector3(0.236660004f, 0.923919976f, -2.58299994f);
-    [SerializeField] private float scaleGrowDuration = 0.2f;
 
     [Header("Collision")]
     [SerializeField] private float collisionEnableDelay = 0.05f;
@@ -37,40 +36,16 @@ public class EnergyBullet : MonoBehaviour
 
         canCollide = false;
 
+        visualTransform.localScale = targetScale;
+
         rb.isKinematic = false;
         rb.useGravity = false;
         rb.velocity = Vector3.zero;
         rb.velocity = direction.normalized * speed;
 
-        StartCoroutine(GrowVisualScale());
         StartCoroutine(EnableCollisionAfterDelay());
 
         Destroy(gameObject, lifeTime);
-    }
-
-    private IEnumerator GrowVisualScale()
-    {
-        visualTransform.localScale = Vector3.zero;
-
-        float timer = 0f;
-
-        while (timer < scaleGrowDuration)
-        {
-            timer += Time.deltaTime;
-
-            float progress = timer / scaleGrowDuration;
-            progress = Mathf.Clamp01(progress);
-
-            visualTransform.localScale = Vector3.Lerp(
-                Vector3.zero,
-                targetScale,
-                progress
-            );
-
-            yield return null;
-        }
-
-        visualTransform.localScale = targetScale;
     }
 
     private IEnumerator EnableCollisionAfterDelay()
@@ -79,8 +54,11 @@ public class EnergyBullet : MonoBehaviour
         canCollide = true;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision other)
     {
-        //Destroy(gameObject);
+        if (other.gameObject.CompareTag("Shield"))
+        {
+            Destroy(gameObject);
+        }
     }
 }
