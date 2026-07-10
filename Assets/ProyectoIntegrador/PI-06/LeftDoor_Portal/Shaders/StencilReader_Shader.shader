@@ -50,7 +50,7 @@ Shader "Custom/StencilReader"
 }
 /*ASEBEGIN
 Version=18900
-372;73;1199;698;897.619;360.4303;1.251262;True;False
+372;73;1199;698;1218.583;512.7543;1.551262;True;False
 Node;AmplifyShaderEditor.TexturePropertyNode;2;-653.6706,-173.4225;Inherit;True;Property;_Albedo;Albedo;0;0;Create;True;0;0;0;False;0;False;None;None;False;white;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1
 Node;AmplifyShaderEditor.SamplerNode;1;-376.6833,-172.6749;Inherit;True;Property;_TextureSample0;Texture Sample 0;0;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.ColorNode;4;-287.0033,95.02898;Inherit;False;Property;_Color;Color;1;0;Create;True;0;0;0;False;0;False;1,1,1,1;1,1,1,1;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
@@ -61,4 +61,4 @@ WireConnection;3;0;1;0
 WireConnection;3;1;4;0
 WireConnection;0;0;3;0
 ASEEND*/
-//CHKSM=A155B4E3BF75293E8A228C6B1DF27937F5E0E323
+//CHKSM=C06C6F228E16AEF86CCF52C87BD2C238B26C98B1
