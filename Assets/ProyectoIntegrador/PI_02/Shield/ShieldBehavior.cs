@@ -21,12 +21,12 @@ public class ShieldBehavior : MonoBehaviour
     public void Awake()
     {
         render = GetComponent<Renderer>();
-        droidekaShieldMat.SetFloat("_LifeShield", lifeShield);
         lifeShield = 1f;
+        droidekaShieldMat.SetFloat("_LifeShield", lifeShield);
     }
     public void Update()
     {
-        if (lifeShield <= 0)
+        if (lifeShield < 0)
         {
             DestroyShield();
         }
@@ -42,7 +42,7 @@ public class ShieldBehavior : MonoBehaviour
         }
 
         droidekaShieldMat.SetVector("_HitShield", hitVector);
-        droidekaShieldMat.SetFloat("_LifeShield", lifeShield);
+
     }
 
 
@@ -55,8 +55,8 @@ public class ShieldBehavior : MonoBehaviour
             droidekaShieldMat.SetVector("_HitShield", hitVector);
             hitTime = 500;
             droidekaShieldMat.SetFloat("_HitTime", hitTime);
-            droidekaShieldMat.SetFloat("_LifeShield", lifeShield);
             lifeShield -= 0.25f;
+            droidekaShieldMat.SetFloat("_LifeShield", lifeShield);
         }
     }
 

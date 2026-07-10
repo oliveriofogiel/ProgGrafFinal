@@ -103,7 +103,7 @@ Material:
     - _linearSpeed: 3
     - _linearSpeed2: 1
     m_Colors:
-    - _AuraColor: {r: 1, g: 0.2509804, b: 0.14509805, a: 1}
+    - _AuraColor: {r: 1, g: 0.25098038, b: 0.145098, a: 1}
     - _Color: {r: 1, g: 0, b: 0, a: 1}
     - _Color0: {r: 1, g: 0.2500185, b: 0.1462264, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

@@ -79,17 +79,17 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _HitTime: 0
-    - _LifeShield: 0.75
+    - _LifeShield: 1
     - _LineAmount: 40
     - _LineSpeed: 8
     - _LineStrength: 0.43
-    - _MaxDeform: 0.025
+    - _MaxDeform: 0.08
     - _Metallic: 0
     - _MinDeform: -0.05
     - _Mode: 0
     - _NoiseStrength: 0.78
     - _OcclusionStrength: 1
-    - _Opacity: 0.34
+    - _Opacity: 0.12
     - _Parallax: 0.02
     - _RetrocesoDeImpacto: -0.5
     - _ShieldPatternScale: 9.5
@@ -108,7 +108,7 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EdgeColor: {r: 0.72156864, g: 0.86196834, b: 1, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _HitShield: {r: 0.042635754, g: -0.000000031789146, b: -0.46638694, a: 0}
+    - _HitShield: {r: 0, g: 0, b: 0, a: 0}
     - _ShieldColor: {r: 0, g: 0.6807935, b: 1, a: 0}
     - _hitShield: {r: 12.55, g: 1.5, b: 5.81, a: 0}
   m_BuildTextureStacks: []
