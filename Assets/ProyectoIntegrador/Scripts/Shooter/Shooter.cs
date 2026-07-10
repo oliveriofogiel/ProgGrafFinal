@@ -4,7 +4,6 @@ using UnityEngine.Events;
 public class Shooter : MonoBehaviour
 {
     [Header("VFX")]
-    [SerializeField] private GameObject fireVFX;
     [SerializeField] private GameObject buildUpVFX;
 
     [Header("Animation")]
@@ -48,8 +47,7 @@ public class Shooter : MonoBehaviour
             buildUpVFX.SetActive(false);
         }
 
-        if (fireVFX != null)
-            fireVFX.SetActive(false);
+        
     }
 
     private void Update()
@@ -67,9 +65,6 @@ public class Shooter : MonoBehaviour
 
             if (buildUpVFX != null)
                 buildUpVFX.SetActive(false);
-
-            if (fireVFX != null)
-                fireVFX.SetActive(false);
 
             if (timer >= cycleDuration)
             {
@@ -108,11 +103,7 @@ public class Shooter : MonoBehaviour
                 if (buildUpVFX != null)
                     buildUpVFX.SetActive(false);
 
-                if (fireVFX != null)
-                {
-                    fireVFX.SetActive(true);
-                    fireVFXActive = true;
-                }
+               
 
                 ShootProjectile();
                 onShoot?.Invoke();
@@ -129,11 +120,6 @@ public class Shooter : MonoBehaviour
             if (buildUpVFX != null)
                 buildUpVFX.SetActive(false);
 
-            if (fireVFXActive && fireVFX != null && state.normalizedTime > 0.2f)
-            {
-                fireVFX.SetActive(false);
-                fireVFXActive = false;
-            }
 
             buildUpStarted = false;
             bulletShot = false;

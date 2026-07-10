@@ -81,14 +81,6 @@ public class EnergyBullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (!canCollide)
-            return;
-
-        Debug.Log("La bala chocó contra: " + collision.gameObject.name);
-        if (collision.gameObject.CompareTag("Shield"))
-        {
-            Debug.Log("¡Enemigo alcanzado!");
-            Destroy(gameObject);
-        }
+        Destroy(gameObject);
     }
 }
