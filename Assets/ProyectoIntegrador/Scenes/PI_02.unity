@@ -349,6 +349,80 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae6041c0c33285c43b4f806225c736b0, type: 3}
+--- !u!1001 &370053640
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1806084906}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 2b121847ee5411440af852d9f7efb539, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.079812616
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2b121847ee5411440af852d9f7efb539, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.079812616
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2b121847ee5411440af852d9f7efb539, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.079812616
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2b121847ee5411440af852d9f7efb539, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2b121847ee5411440af852d9f7efb539, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.4003
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2b121847ee5411440af852d9f7efb539, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.2428
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2b121847ee5411440af852d9f7efb539, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2b121847ee5411440af852d9f7efb539, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2b121847ee5411440af852d9f7efb539, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2b121847ee5411440af852d9f7efb539, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2b121847ee5411440af852d9f7efb539, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2b121847ee5411440af852d9f7efb539, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2b121847ee5411440af852d9f7efb539, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2b121847ee5411440af852d9f7efb539, type: 3}
+      propertyPath: m_Name
+      value: droideka
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2b121847ee5411440af852d9f7efb539, type: 3}
+--- !u!4 &370053641 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2b121847ee5411440af852d9f7efb539, type: 3}
+  m_PrefabInstance: {fileID: 370053640}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &468882260
 GameObject:
   m_ObjectHideFlags: 0
@@ -1273,6 +1347,7 @@ GameObject:
   - component: {fileID: 1806084905}
   - component: {fileID: 1806084904}
   - component: {fileID: 1806084903}
+  - component: {fileID: 1806084907}
   m_Layer: 0
   m_Name: Shield
   m_TagString: Shield
@@ -1363,9 +1438,27 @@ Transform:
   m_LocalPosition: {x: 0.08, y: 0.766, z: 4.533}
   m_LocalScale: {x: 1.875, y: 1.875, z: 1.875}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 370053641}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1806084907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1806084902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44aaaf47de483b244b3ce034656405c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  droidekaShieldMat: {fileID: 2100000, guid: 102245f82e309f74482ba3c562ab09f9, type: 2}
+  impactDuration: 0.4
+  projectileMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

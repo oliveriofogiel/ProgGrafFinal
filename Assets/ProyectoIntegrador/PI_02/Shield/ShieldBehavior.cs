@@ -9,6 +9,7 @@ public class ShieldBehavior : MonoBehaviour
     private bool isAfected;
     private Vector3 hitVector;
     private float hitTime;
+    private float lifeShield;
     private Renderer render;
     [SerializeField] private Material droidekaShieldMat;
 
@@ -20,9 +21,16 @@ public class ShieldBehavior : MonoBehaviour
     public void Awake()
     {
         render = GetComponent<Renderer>();
+        droidekaShieldMat.SetFloat("_LifeShield", lifeShield);
+        lifeShield = 1f;
     }
     public void Update()
     {
+        if (lifeShield <= 0)
+        {
+            DestroyShield();
+        }
+
         if (hitTime > 0)
         {
             hitTime -= Time.deltaTime * 1000;
@@ -34,10 +42,11 @@ public class ShieldBehavior : MonoBehaviour
         }
 
         droidekaShieldMat.SetVector("_HitShield", hitVector);
+        droidekaShieldMat.SetFloat("_LifeShield", lifeShield);
     }
 
 
-    void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         foreach (ContactPoint contact in collision.contacts)
         {
@@ -46,7 +55,15 @@ public class ShieldBehavior : MonoBehaviour
             droidekaShieldMat.SetVector("_HitShield", hitVector);
             hitTime = 500;
             droidekaShieldMat.SetFloat("_HitTime", hitTime);
+            droidekaShieldMat.SetFloat("_LifeShield", lifeShield);
+            lifeShield -= 0.25f;
         }
     }
+
+    private void DestroyShield()
+    {
+        Destroy(gameObject);
+    }
+
 
 }
