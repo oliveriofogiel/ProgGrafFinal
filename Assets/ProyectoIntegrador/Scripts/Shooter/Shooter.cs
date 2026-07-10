@@ -1,68 +1,176 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
 
 public class Shooter : MonoBehaviour
 {
+    [Header("VFX")]
     [SerializeField] private GameObject fireVFX;
     [SerializeField] private GameObject buildUpVFX;
-    private bool buildUpAct = false;
-    [SerializeField] private Animator  animator;
-    [SerializeField] private float cycleDuration;
-    [SerializeField] private float delayForShotSync;
 
-    [SerializeField] private AnimatorStateInfo animatorStateInfo;
+    [Header("Animation")]
+    [SerializeField] private Animator animator;
+    [SerializeField] private float cycleDuration = 2.1f; // espera en Idle Crouching Aiming antes de activar animación
+
+    [Header("Projectile")]
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private Transform firePoint;
+    [SerializeField] private float bulletSpeed = 50f;
+    [SerializeField] private float spawnOffset = 1f;
 
     public UnityEvent onShoot;
-    
 
-    private float timer = 0f;
+    private float timer;
 
-    void Start()
+    private int idleAimingHash;
+    private int crouchIdleHash;
+    private int fireRifleHash;
+    private int reloadHash;
+
+    private bool buildUpStarted;
+    private bool bulletShot;
+    private bool fireVFXActive;
+
+    private BuildUpScript buildUp;
+
+    private void Start()
     {
-        animator = GetComponent<Animator>();
-        
-    }
-    
-    void Update()
-    {
-        animatorStateInfo = animator.GetCurrentAnimatorStateInfo(0);
-        timer += Time.deltaTime;
-        if (timer >= cycleDuration)
+        if (animator == null)
+            animator = GetComponent<Animator>();
+
+        idleAimingHash = Animator.StringToHash("Idle Crouching Aiming");
+        crouchIdleHash = Animator.StringToHash("Crouch Idle");
+        fireRifleHash = Animator.StringToHash("Fire Rifle");
+        reloadHash = Animator.StringToHash("Reload");
+
+        if (buildUpVFX != null)
         {
-            animator.SetTrigger("triggerAnim");
-            timer = 0;
-            StartCoroutine(WaitForShot());
-        }
-        if(animatorStateInfo.shortNameHash == Animator.StringToHash("Idle Crouching Aiming"))
-        {
+            buildUp = buildUpVFX.GetComponent<BuildUpScript>();
             buildUpVFX.SetActive(false);
-            fireVFX.SetActive(false);
         }
-        if (animatorStateInfo.shortNameHash == Animator.StringToHash("Crouch Idle"))
+
+        if (fireVFX != null)
+            fireVFX.SetActive(false);
+    }
+
+    private void Update()
+    {
+        AnimatorStateInfo state = animator.GetCurrentAnimatorStateInfo(0);
+        int currentState = state.shortNameHash;
+
+        if (currentState == idleAimingHash)
         {
-            buildUpVFX.SetActive(true);
-            if (!buildUpAct)
+            timer += Time.deltaTime;
+
+            buildUpStarted = false;
+            bulletShot = false;
+            fireVFXActive = false;
+
+            if (buildUpVFX != null)
+                buildUpVFX.SetActive(false);
+
+            if (fireVFX != null)
+                fireVFX.SetActive(false);
+
+            if (timer >= cycleDuration)
             {
-                buildUpVFX.GetComponent<buildUpScript>().ResetRad();
-                buildUpAct = true;
+                timer = 0f;
+                animator.SetTrigger("triggerAnim");
             }
         }
-        if (animatorStateInfo.shortNameHash == Animator.StringToHash("Fire Rifle"))
+
+        if (currentState == crouchIdleHash)
         {
-            buildUpVFX.SetActive(false);
-            buildUpAct = false;
-            fireVFX.SetActive(true);
+            timer = 0f;
+
+            if (!buildUpStarted)
+            {
+                buildUpStarted = true;
+
+                if (buildUpVFX != null)
+                    buildUpVFX.SetActive(true);
+
+                if (buildUp != null)
+                    buildUp.StartBuildUp();
+            }
+        }
+
+        if (currentState == fireRifleHash)
+        {
+            timer = 0f;
+
+            if (!bulletShot)
+            {
+                bulletShot = true;
+
+                if (buildUp != null)
+                    buildUp.StopBuildUp();
+
+                if (buildUpVFX != null)
+                    buildUpVFX.SetActive(false);
+
+                if (fireVFX != null)
+                {
+                    fireVFX.SetActive(true);
+                    fireVFXActive = true;
+                }
+
+                ShootProjectile();
+                onShoot?.Invoke();
+            }
+        }
+
+        if (currentState == reloadHash)
+        {
+            timer = 0f;
+
+            if (buildUp != null)
+                buildUp.StopBuildUp();
+
+            if (buildUpVFX != null)
+                buildUpVFX.SetActive(false);
+
+            if (fireVFXActive && fireVFX != null && state.normalizedTime > 0.2f)
+            {
+                fireVFX.SetActive(false);
+                fireVFXActive = false;
+            }
+
+            buildUpStarted = false;
+            bulletShot = false;
         }
     }
 
-    IEnumerator WaitForShot()
+    private void ShootProjectile()
     {
-        yield return new WaitForSeconds(delayForShotSync);
+        if (bulletPrefab == null)
+        {
+            Debug.LogError("No asignaste el Bullet Prefab.");
+            return;
+        }
 
-        onShoot?.Invoke();
+        if (firePoint == null)
+        {
+            Debug.LogError("No asignaste el Fire Point.");
+            return;
+        }
+
+        Vector3 spawnPosition = firePoint.position + firePoint.forward * spawnOffset;
+
+        GameObject bullet = Instantiate(
+            bulletPrefab,
+            spawnPosition,
+            firePoint.rotation
+        );
+
+        EnergyBullet energyBullet = bullet.GetComponent<EnergyBullet>();
+
+        if (energyBullet != null)
+        {
+            energyBullet.Launch(firePoint.forward, bulletSpeed);
+        }
+        else
+        {
+            Debug.LogError("La bala no tiene EnergyBullet.");
+        }
     }
-
 }

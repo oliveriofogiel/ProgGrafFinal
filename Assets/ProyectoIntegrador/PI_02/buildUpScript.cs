@@ -1,34 +1,45 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
 
-public class buildUpScript : MonoBehaviour
+public class BuildUpScript : MonoBehaviour
 {
-    [SerializeField] private float radius;
-    [SerializeField] private float radLimit;
-    private bool buildUp = true;
+    [Header("Build Up Oscillation")]
+    [SerializeField] private float minRadius = 0.3f;
+    [SerializeField] private float maxRadius = 2f;
+    [SerializeField] private float oscillationSpeed = 5f;
+    [SerializeField] private float zScale = 0.06f;
 
-    // Update is called once per frame
-    void Update()
+    private bool isCharging;
+    private float timer;
+
+    private void Update()
     {
-        if(!buildUp)
-        {
-            radius -= Time.deltaTime;
-            transform.localScale = new Vector3(radius, radius, 0.06f);
-            if (radius < radLimit/2) buildUp = true;
-        }
-        else if (buildUp)
-        {
-            radius += Time.deltaTime;
-            transform.localScale = new Vector3(radius, radius, 0.06f);
-            if(radius > radLimit) buildUp = false;
-        }
+        if (!isCharging)
+            return;
+
+        timer += Time.deltaTime * oscillationSpeed;
+
+        float oscillation = (Mathf.Sin(timer) + 1f) / 2f;
+        float currentRadius = Mathf.Lerp(minRadius, maxRadius, oscillation);
+
+        transform.localScale = new Vector3(currentRadius, currentRadius, zScale);
+    }
+
+    public void StartBuildUp()
+    {
+        isCharging = true;
+        timer = 0f;
+        transform.localScale = new Vector3(minRadius, minRadius, zScale);
+    }
+
+    public void StopBuildUp()
+    {
+        isCharging = false;
+        timer = 0f;
+        transform.localScale = Vector3.zero;
     }
 
     public void ResetRad()
     {
-        radius = 0;
-        transform.localScale = new Vector3(0, 0, 0);
+        StopBuildUp();
     }
 }
